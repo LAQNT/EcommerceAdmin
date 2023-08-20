@@ -1,9 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { CldUploadWidget } from "next-cloudinary";
 import { useEffect, useState } from "react";
+
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import { ImagePlus, Trash } from "lucide-react";
 
 interface ImageUploadProps {
@@ -32,6 +33,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   if (!isMounted) {
     return null;
   }
+
   return (
     <div>
       <div className="mb-4 flex items-center gap-4">
@@ -45,18 +47,12 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                 type="button"
                 onClick={() => onRemove(url)}
                 variant="destructive"
-                size="icon"
+                size="sm"
               >
                 <Trash className="h-4 w-4" />
               </Button>
             </div>
-            <Image
-              fill
-              className="object-cover"
-              alt="Image"
-              // src={url}
-              src={url ? "/" + url : ""}
-            />
+            <Image fill className="object-cover" alt="Image" src={url} />
           </div>
         ))}
       </div>
